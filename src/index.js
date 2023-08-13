@@ -9,10 +9,42 @@ import {
   createTheme,
   StyledEngineProvider,
 } from "@mui/material";
-
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import createCache from "@emotion/cache";
+import { CacheProvider } from "@emotion/react";
 import "./global.css";
 
-const muiTheme = createTheme();
+const muiTheme = createTheme({
+  palette: {
+    success: { dark: "rgba(91,230,101,1)" },
+    background: { paper: "rgba(163,202,151,0.75)" },
+    mode: "dark",
+  },
+  typography: { fontFamily: "Inter", fontSize: 19 },
+  shape: { borderRadius: 5 },
+});
+const chakraTheme = extendTheme({
+  styles: { global: { img: { maxWidth: "unset" } } },
+  colors: {
+    gray: {
+      50: "#f7fafc",
+      100: "#edf2f7",
+      200: "#e2e8f0",
+      300: "#cbd5e0",
+      400: "#a0aec0",
+      500: "#718096",
+      600: "#4a5568",
+      700: "#2c3748",
+      800: "#1a202c",
+      900: "#171923",
+    },
+  },
+  fonts: { heading: "Inter", body: "Inter" },
+});
+const emotionCache = createCache({
+  key: "emotion-cache",
+  prepend: true,
+});
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -21,8 +53,12 @@ root.render(
   <BrowserRouter>
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={muiTheme}>
-        <CssBaseline />
-        <App />
+        <CacheProvider value={emotionCache}>
+          <ChakraProvider theme={chakraTheme}>
+            <CssBaseline />
+            <App />
+          </ChakraProvider>
+        </CacheProvider>
       </ThemeProvider>
     </StyledEngineProvider>
   </BrowserRouter>

@@ -4,13 +4,16 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
-import SignUpPage from "./pages/SignUpPage";
+import UserProfile from "./pages/UserProfile";
+import UploaderProfile from "./pages/UploaderProfile";
+import BookDetails from "./pages/BookDetails";
+import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
 import MainPage from "./pages/MainPage";
-import HOme from "./pages/HOme";
-import HOme1 from "./pages/HOme1";
-import SignupPage1 from "./pages/SignupPage1";
-import Desktop1 from "./pages/Desktop1";
+import EditProfile from "./pages/EditProfile";
+import AddBook from "./pages/AddBook";
+import HomePage1 from "./pages/HomePage1";
 import { useEffect } from "react";
 
 function App() {
@@ -33,7 +36,23 @@ function App() {
         title = "";
         metaDescription = "";
         break;
+      case "/uploader-profile":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/book-details":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/home-page":
+        title = "";
+        metaDescription = "";
+        break;
       case "/login-page":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/sign-up-page":
         title = "";
         metaDescription = "";
         break;
@@ -41,19 +60,15 @@ function App() {
         title = "";
         metaDescription = "";
         break;
-      case "/home":
+      case "/edit-profile":
         title = "";
         metaDescription = "";
         break;
-      case "/home1":
+      case "/add-book":
         title = "";
         metaDescription = "";
         break;
-      case "/signup-page":
-        title = "";
-        metaDescription = "";
-        break;
-      case "/desktop-1":
+      case "/home-page1":
         title = "";
         metaDescription = "";
         break;
@@ -75,13 +90,16 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<SignUpPage />} />
+      <Route path="/" element={<UserProfile />} />
+      <Route path="/uploader-profile" element={<UploaderProfile />} />
+      <Route path="/book-details" element={<BookDetails />} />
+      <Route path="/home-page" element={<HomePage />} />
       <Route path="/login-page" element={<LoginPage />} />
+      <Route path="/sign-up-page" element={<SignUpPage />} />
       <Route path="/main-page" element={<MainPage />} />
-      <Route path="/home" element={<HOme />} />
-      <Route path="/home1" element={<HOme1 />} />
-      <Route path="/signup-page" element={<SignupPage1 />} />
-      <Route path="/desktop-1" element={<Desktop1 />} />
+      <Route path="/edit-profile" element={<EditProfile />} />
+      <Route path="/add-book" element={<AddBook />} />
+      <Route path="/home-page1" element={<HomePage1 />} />
     </Routes>
   );
 }

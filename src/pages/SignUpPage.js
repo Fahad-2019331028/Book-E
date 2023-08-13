@@ -1,80 +1,101 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import "./SignUpPage.css";
+import styles from "./SignUpPage.module.css";
 const SignUpPage = () => {
   const navigate = useNavigate();
 
-  const onSignUpPageContainerClick = useCallback(() => {
-    navigate("/home");
-  }, [navigate]);
-
-  const onSignupClick = useCallback(() => {
-    navigate("/");
+  const onAboutClick = useCallback(() => {
+    navigate("/main-page");
   }, [navigate]);
 
   const onLoginClick = useCallback(() => {
     navigate("/login-page");
   }, [navigate]);
 
+  const onSignUpButtonClick = useCallback(() => {
+    navigate("/home-page");
+  }, [navigate]);
+
   return (
-    <div className="signup-page" onClick={onSignUpPageContainerClick}>
-      <nav className="navbar" id="nav">
-        <div className="book-e-icon">
-          <img className="vector-icon" alt="" src="/vector.svg" />
-          <div className="book-e">Book-E</div>
+    <div className={styles.signUpPage}>
+      <nav className={styles.navbar} id="navbar" navbar>
+        <div className={styles.icon}>
+          <img
+            className={styles.phbookThinIcon}
+            alt=""
+            src="/phbookthin1.svg"
+          />
+          <div className={styles.bookE}>BOOK-E</div>
         </div>
-        <div className="sl">
-          <button className="signup" onClick={onSignupClick}>
-            <div className="sign-up">Sign Up</div>
+        <div className={styles.button}>
+          <button className={styles.about} onClick={onAboutClick}>
+            About
           </button>
-          <button className="login" onClick={onLoginClick}>
-            <div className="login1">Login</div>
+          <button className={styles.about}>Sign Up</button>
+          <button className={styles.about} onClick={onLoginClick}>
+            Login
           </button>
         </div>
       </nav>
-      <form method="post" id="signUp">
-        <div className="sign-up1">SIgn UP</div>
-        <div className="sign-up-form">
-          <form className="name" method="post" id="name">
-            <div className="name1">Name</div>
-            <textarea className="name-text" />
-          </form>
-          <form className="phone" method="post">
-            <div className="name1">Phone</div>
-            <input className="name-text" type="text" />
-          </form>
-          <div className="address">
-            <div className="address1">Address</div>
-            <input className="address-text" type="text" />
-          </div>
-          <div className="gender">
-            <div className="gender1">gender</div>
-            <input className="gender2" type="text" />
-          </div>
-          <div className="email">
-            <div className="email1">Email</div>
-            <input className="email-text" type="text" />
-          </div>
-          <div className="address">
-            <div className="date-of-birth">Date of birth</div>
-            <input className="address-text" type="text" />
-          </div>
-          <div className="address">
-            <div className="profession1">profession</div>
-            <input className="profession-text" type="text" />
-          </div>
-          <div className="address">
-            <div className="password1">password</div>
-            <input className="address-text" type="text" />
-          </div>
-          <div className="address">
-            <div className="confirm-password">confirm password</div>
-            <input className="address-text" type="text" />
-          </div>
-        </div>
-        <button className="signup1">
-          <div className="sign-up2">Sign Up</div>
+      <img className={styles.bgBlurSignUpPageIcon} alt="" src="/bg_blur5.svg" />
+      <form className={styles.signUpSection} method="post">
+        <img
+          className={styles.signUpSectionChild}
+          alt=""
+          src="/rectangle-113@2x.png"
+        />
+        <input
+          className={styles.confirmPassword}
+          type="text"
+          placeholder={`Confirm Password
+`}
+        />
+        <input
+          className={styles.password}
+          type="password"
+          placeholder="Password"
+          required
+          id="passord"
+        />
+        <input
+          className={styles.email}
+          type="email"
+          placeholder="Email"
+          required
+          id="email"
+        />
+        <input
+          className={styles.userName}
+          type="text"
+          placeholder="User Name"
+          required
+          id="user_name"
+        />
+        <input
+          className={styles.phone}
+          type="text"
+          placeholder="Phone Number"
+          required
+          id="phone_number"
+        />
+        <input
+          className={styles.address}
+          type="text"
+          placeholder="Address"
+          required
+          id="address"
+        />
+        <input
+          className={styles.name}
+          type="text"
+          placeholder="Name "
+          required
+          id="name"
+        />
+        <button className={styles.signUpButton} onClick={onSignUpButtonClick}>
+          <div className={styles.signUp1}>Sign Up</div>
         </button>
+        <div className={styles.getStarted}>Get Started</div>
       </form>
     </div>
   );

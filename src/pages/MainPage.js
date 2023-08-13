@@ -1,51 +1,52 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import "./MainPage.css";
+import styles from "./MainPage.module.css";
 const MainPage = () => {
   const navigate = useNavigate();
 
-  const onSignupClick = useCallback(() => {
-    navigate("/");
+  const onSignUpClick = useCallback(() => {
+    navigate("/sign-up-page");
   }, [navigate]);
 
   const onLoginClick = useCallback(() => {
     navigate("/login-page");
   }, [navigate]);
 
-  const onSignup1Click = useCallback(() => {
-    navigate("/");
+  const onLoginButtonClick = useCallback(() => {
+    navigate("/login-page");
   }, [navigate]);
 
-  const onLogin1Click = useCallback(() => {
-    const anchor = document.querySelector("[data-scroll-to='loginText']");
-    if (anchor) {
-      anchor.scrollIntoView({ block: "start", behavior: "smooth" });
-    }
-  }, []);
+  const onSignUpButtonClick = useCallback(() => {
+    navigate("/sign-up-page");
+  }, [navigate]);
 
   return (
-    <div className="main-page">
-      <nav className="navbar2" id="nav">
-        <div className="book-e-icon2">
-          <img className="vector-icon2" alt="" src="/vector.svg" />
-          <div className="book-e2">Book-E</div>
+    <div className={styles.mainPage}>
+      <nav className={styles.navbar} id="navbar" navbar>
+        <div className={styles.icon}>
+          <img
+            className={styles.phbookThinIcon}
+            alt=""
+            src="/phbookthin1.svg"
+          />
+          <div className={styles.bookE}>BOOK-E</div>
         </div>
-        <div className="sl2">
-          <button className="signup3" onClick={onSignupClick}>
-            <div className="sign-up4">Sign Up</div>
+        <div className={styles.button}>
+          <button className={styles.about}>About</button>
+          <button className={styles.about} onClick={onSignUpClick}>
+            Sign Up
           </button>
-          <button className="login7" onClick={onLoginClick}>
-            <div className="login8">Login</div>
+          <button className={styles.about} onClick={onLoginClick}>
+            Login
           </button>
         </div>
       </nav>
-      <button className="signup4" onClick={onSignup1Click}>
-        <div className="sign-up5">Sign Up</div>
+      <img className={styles.bgBlurIcon} alt="" src="/bg_blur6.svg" />
+      <button className={styles.loginButton} onClick={onLoginButtonClick}>
+        <div className={styles.login1}>Login</div>
       </button>
-      <button className="login9" onClick={onLogin1Click}>
-        <div className="login10" data-scroll-to="loginText">
-          Login
-        </div>
+      <button className={styles.signUpButton} onClick={onSignUpButtonClick}>
+        <div className={styles.signUp1}>Sign Up</div>
       </button>
     </div>
   );
